@@ -1,101 +1,155 @@
 import Image from "next/image";
+import CustomCard from "@/components/custom-card"; // Assurez-vous que le chemin est correct !
 
-export default function Home() {
+import { features } from "@/datas/features";
+//import { projects } from "@/datas/projects";
+
+import CustomButton from "@/components/custom-button";
+import {Button} from "@/components/ui/button";
+
+//const selectedProjects = projects.slice(0, 3);
+
+
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      <>
+        {/* Section Hero */}
+        <section className="section bg-gradient-to-r from-secondary to-primary text-background text-center py-10">
+          <div className="max-w-4xl flex flex-col mx-auto gap-6  mt-8">
+            {/* Image */}
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+                src="/images/hero-img.webp"
+                width={700}
+                height={350}
+                alt="Développeuse web Armandine Barge"
+                className="w-full max-w-[350px] h-auto rounded-lg shadow-lg object-cover mx-auto mt-2"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+            {/* Titre principal */}
+            <h1 className="text-4xl font-bold leading-tight">
+              Donnez vie à vos idées <br />
+              avec un site web{" "}
+              <span className="text-secondary">sur mesure</span>
+            </h1>
+
+            {/* Sous-titre */}
+            <h2 className="text-xl font-medium text-background mb-2">
+              Je suis Armandine Barge, développeuse web freelance.
+            </h2>
+
+            {/* Texte condensé */}
+            <p className="fontFamily-body text-base leading-relaxed">
+              Que vous soyez coach, graphiste ou entrepreneur·e, je conçois avec vous des
+              sites performants, éco-responsables et optimisés pour le SEO.
+              Ensemble, faisons rayonner votre activité en ligne avec des
+              solutions numériques pensées pour vous.
+            </p>
+
+            {/* Bouton principal */}
+            <Button variant="hero" size="lg"><a href="/contact">Contactez-moi</a> </Button>
+
+          </div>
+        </section>
+
+        {/* Section Services */}
+        <section className="section">
+          <h2 >Je vous propose</h2>
+          <div className="flex flex-col md:flex-row gap-6 items-stretch">
+            {features.map((feature) => (
+                <CustomCard title={feature.title}
+              subtitle={feature.subtitle}
+              paragraphs={feature.paragraphs}
+              lists={feature.lists}
+              benefits={feature.benefits}
+              price={feature.price}
+              cta={feature.cta} key={feature.title} />
+            ))}
+          </div>
+        </section>
+
+        {/* Section Pourquoi travailler avec moi ? */}
+        <section className="bg-light py-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-2xl font-bold text-primary mb-6">
+              Pourquoi travailler avec moi ?
+            </h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "🌍 Éco-responsabilité",
+                  description: "Des solutions numériques respectueuses de l'environnement.",
+                },
+                {
+                  title: "🚀 SEO performant",
+                  description: "Vos sites optimisés pour vous positionner en tête des résultats Google.",
+                },
+                {
+                  title: "💡 Design sur-mesure",
+                  description: "Un site qui reflète votre image et votre activité.",
+                },
+                {
+                  title: "🛠 Support technique",
+                  description: "Un accompagnement de qualité même après la mise en ligne.",
+                },
+                {
+                  title: "❤️ Collaboration personnalisée",
+                  description: "J'écoute vos besoins pour des solutions uniques.",
+                },
+              ].map((item, index) => (
+                  <li key={index} className="bg-white shadow-md p-6 rounded-lg">
+                    <h3 className="font-bold text-lg text-primary">{item.title}</h3>
+                    <p className="text-sm text-text">{item.description}</p>
+                  </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Section Processus de création */}
+        <section className="bg-gray-100 py-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-2xl font-bold text-primary mb-6">
+              Mon processus de création
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "1. Découverte",
+                  description: "Échange pour comprendre vos besoins et objectifs.",
+                },
+                {
+                  title: "2. Conception",
+                  description: "Design du site avec un prototype personnalisé.",
+                },
+                {
+                  title: "3. Développement",
+                  description: "Mise en ligne d’un site performant et sécurisé.",
+                },
+              ].map((step, index) => (
+                  <div key={index} className="p-6 bg-white shadow-md rounded-lg">
+                    <h3 className="text-lg font-bold text-primary">{step.title}</h3>
+                    <p className="text-sm text-text">{step.description}</p>
+                  </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Section Contact */}
+        <section className="bg-gradient-to-r from-primary to-secondary text-white py-10 text-center">
+          <div className="max-w-4xl mx-auto space-y-6">
+            <h2 className="text-3xl font-bold text-light text-background">
+              Prêt à donner vie à votre site ?
+            </h2>
+            <p className="text-lg pb-8">
+              Contactez-moi pour discuter de vos idées et créer un site qui fait
+              rayonner votre activité.
+            </p>
+
+            <Button variant="hero" size="lg"><a href="/contact">Contactez-moi</a> </Button>
+          </div>
+        </section>
+      </>
   );
 }

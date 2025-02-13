@@ -2,20 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 220 20% 95%; /* Gris clair */
+    --foreground: 220 10% 10%; /* Presque noir */
+    --card: 220 20% 90%;
+    --card-foreground: 220 10% 20%;
+    --popover: 220 20% 95%;
+    --popover-foreground: 220 10% 15%;
+
+    --primary: 220 100% 40%; /* Bleu Profond */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 330 90% 40%; /* Magenta sombre */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 80%; /* Gris clair */
+    --muted-foreground: 220 10% 30%;
+
+    --accent: 195 100% 50%; /* Cyan Électrique */
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 70% 40%; /* Rouge Désaturé */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 60%;
+    --input: 220 20% 40%;
+    --ring: 220 100% 40%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 20% 15%; /* Gris foncé */
+    --foreground: 220 10% 90%; /* Texte clair */
+
+    --card: 220 20% 10%;
+    --card-foreground: 220 10% 90%;
+    --popover: 220 20% 5%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 220 100% 50%; /* Bleu éclatant */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 330 90% 40%; /* Magenta pour contraste */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 30%; /* Gris neutre */
+    --muted-foreground: 220 10% 70%;
+
+    --accent: 195 100% 50%; /* Cyan éclatant */
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 70% 50%; /* Rouge un peu plus vif */
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 40%;
+    --input: 220 20% 30%;
+    --ring: 220 100% 50%;
+    --radius: 0.5rem;
+  }
+
+}
+
+  @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+    h2{
+      @apply text-primary text-center text-2xl font-bold mt-2 mb-6;
+    }
 }
