@@ -8,7 +8,11 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-  	extend: {
+		extend: {
+		fontFamily: {
+			title: ["var(--font-chakra)", "sans-serif"],
+			text: ["var(--font-quicksand)", "sans-serif"]
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
