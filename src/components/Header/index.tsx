@@ -6,7 +6,7 @@ import { HeaderContent } from './header-content';
 import { Logo } from './logo';
 import { MobileMenuButton } from './mobile-menu-button';
 import { NavigationContainer } from './navigation-container';
-
+import { ThemeToggle } from './theme-toggle';
 export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,6 +21,7 @@ export const Header = () => {
 					setIsMenuOpen={setIsMenuOpen}
 				/>
 				<NavigationContainer isMenuOpen={isMenuOpen} />
+				<ThemeToggle />
 			</div>
 		</header>
 	);

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/footer';
+import { ThemeProvider } from '@/components/Header/theme-provider';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -28,21 +29,25 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="fr">
+		<html
+			lang="fr"
+			suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<a
-					href="#main-content"
-					className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-background">
-					Aller au contenu principal
-				</a>
-				<Header />
-				<main
-					id="main-content"
-					className="max-w-[1200px] mx-auto">
-					{children}
-				</main>
-				<Footer />
+				<ThemeProvider>
+					<a
+						href="#main-content"
+						className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-background">
+						Aller au contenu principal
+					</a>
+					<Header />
+					<main
+						id="main-content"
+						className="max-w-[1200px] mx-auto">
+						{children}
+					</main>
+					<Footer />
+				</ThemeProvider>
 			</body>
 		</html>
 	);
