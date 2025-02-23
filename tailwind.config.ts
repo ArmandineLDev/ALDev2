@@ -8,6 +8,13 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+  	screens: {
+  		sm: '320px',     // mobile
+  		md: '768px',     // tablet
+  		lg: '1024px',    // desktop
+  		xl: '1200px',    // large
+  		'2xl': '1536px'  // extra large
+  	},
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
@@ -55,6 +62,27 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		transitionTimingFunction: {
+  			'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+  		},
+  		transitionDuration: {
+  			'250': '250ms',
+  			'350': '350ms',
+  		},
+  		keyframes: {
+  			'fade-in': {
+  				'0%': { opacity: '0', transform: 'translateY(-10px)' },
+  				'100%': { opacity: '1', transform: 'translateY(0)' }
+  			},
+  			'fade-out': {
+  				'0%': { opacity: '1', transform: 'translateY(0)' },
+  				'100%': { opacity: '0', transform: 'translateY(-10px)' }
+  			}
+  		},
+  		animation: {
+  			'fade-in': 'fade-in 0.3s ease-out',
+  			'fade-out': 'fade-out 0.3s ease-out'
   		}
   	}
   },

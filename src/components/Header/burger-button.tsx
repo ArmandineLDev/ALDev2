@@ -1,11 +1,17 @@
 interface BurgerButtonProps {
 	onClick: () => void;
 	isOpen: boolean;
+	onKeyDown?: (e: React.KeyboardEvent) => void;
 }
 
-export const BurgerButton = ({ onClick, isOpen }: BurgerButtonProps) => (
+export const BurgerButton = ({
+	onClick,
+	isOpen,
+	onKeyDown,
+}: BurgerButtonProps) => (
 	<button
 		onClick={onClick}
+		onKeyDown={onKeyDown}
 		className="p-2 text-primary-foreground"
 		aria-label="Menu principal"
 		aria-expanded={isOpen}

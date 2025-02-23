@@ -1,4 +1,5 @@
 require('@testing-library/jest-dom');
+require('jest-axe/extend-expect');
 
 // Ajouter un avertissement pour les erreurs de console pendant les tests
 const originalError = console.error;
